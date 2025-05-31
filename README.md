@@ -6,11 +6,11 @@ pnpm dlx giget@latest gh:steveyackey/nuxt-starter <repoName>
 
 ## Overview
 
-- [x] env and eslint based on rules by [@w3cj](https://gist.github.com/w3cj/3d331e23c17df1dbeaa55342f230f3ee) -[x] sets up husky with lint-staged to run `pnpm lint` on commit
-
+- [x] env and eslint based on rules by [@w3cj](https://gist.github.com/w3cj/3d331e23c17df1dbeaa55342f230f3ee)
+- [x] sets up husky with lint-staged to run `pnpm lint` on commit
 - [ ] Better-Auth
 - [ ] Drizzle
-- [ ] Nuxt UI Pro
+- [x] Nuxt UI Pro
 - [x] Basic recommended plugins
 
 ## Setup
