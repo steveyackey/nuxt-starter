@@ -5,8 +5,6 @@ import env from "../../shared/env"
 
 const config = env.DATABASE_USE_PGLITE ? { driver: "pglite" } : []
 
-console.warn(config)
-
 export default defineConfig({
   out: "./layers/data/server/db/migrations",
   schema: "./layers/data/server/db/schema/index.ts",

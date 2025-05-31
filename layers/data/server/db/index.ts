@@ -3,13 +3,12 @@ import type { NodePgDatabase } from "drizzle-orm/node-postgres"
 import type { PgliteDatabase } from "drizzle-orm/pglite"
 import type { Pool } from "pg"
 
-import env from "~~/shared/env"
+import type * as schema from "./schema/index"
 
-import type * as schema from "./schema"
-
+import env from "../../../../shared/env"
 import { db as pgDb } from "./drivers/pg"
 
-let db: (PgliteDatabase<typeof schema> & { $client: PGlite }) | (NodePgDatabase<Record<string, never>> & { $client: Pool })
+let db: (PgliteDatabase<typeof schema> & { $client: PGlite }) | (NodePgDatabase<typeof schema> & { $client: Pool })
 
 async function setup() {
   // eslint-disable-next-line no-console

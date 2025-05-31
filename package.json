@@ -16,15 +16,18 @@
     "db:migrate": "drizzle-kit migrate --config ./layers/data/drizzle.config.ts",
     "db:push": "drizzle-kit push --config ./layers/data/drizzle.config.ts",
     "db:studio": "drizzle-kit studio --config ./layers/data/drizzle.config.ts",
-    "auth:generate": "pnpm dlx @better-auth/cli generate --config ./server/utils/auth.ts --output ./server/db/schema/auth.ts -y"
+    "auth:generate": "pnpm dlx @better-auth/cli generate --config ./layers/auth/server/utils/auth.ts --output ./layers/data/server/db/schema/auth.ts -y && pnpm lint:fix"
   },
   "dependencies": {
     "@nuxt/eslint": "1.4.1",
     "@nuxt/icon": "1.13.0",
     "@nuxt/ui-pro": "^3.1.3",
+    "@pinia/nuxt": "0.11.0",
+    "better-auth": "^1.2.8",
     "drizzle-orm": "^0.44.1",
     "nuxt": "^3.17.4",
     "pg": "^8.16.0",
+    "pinia": "^3.0.2",
     "vue": "latest",
     "zod": "^3.25.32"
   },
