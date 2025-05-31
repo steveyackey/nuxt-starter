@@ -1,7 +1,15 @@
+<script setup lang="ts">
+const app = useAppConfig()
+</script>
+
 <template>
   <div>
-    <main>
-      <slot />
-    </main>
+    <UHeader :title="app.title" />
+    <UMain>
+      <UContainer class="mt-6">
+        <slot />
+      </UContainer>
+    </UMain>
+    <UFooter />
   </div>
 </template>
