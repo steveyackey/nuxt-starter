@@ -8,10 +8,10 @@ pnpm dlx giget@latest gh:steveyackey/nuxt-starter <repoName>
 
 - [x] env and eslint based on rules by [@w3cj](https://gist.github.com/w3cj/3d331e23c17df1dbeaa55342f230f3ee)
 - [x] sets up husky with lint-staged to run `pnpm lint` on commit
-- [ ] Better-Auth
+- [x] Better-Auth and auth store w/pinia
 - [x] Drizzle
 - [x] Nuxt UI Pro
-- [x] Basic recommended plugins
+- [x] Layers + Shared
 
 ## Setup
 
@@ -28,6 +28,7 @@ Start the development server on `http://localhost:3000`:
 
 ```bash
 # pnpm
+docker compose up -d
 pnpm run dev
 ```
 
