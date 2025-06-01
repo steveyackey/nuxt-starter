@@ -1,6 +1,8 @@
 import { createAuthClient } from "better-auth/vue"
+import { defineStore } from "pinia"
 
 const authClient = createAuthClient()
+const session = authClient.useSession()
 
 export const useAuthStore = defineStore("useAuthStore", () => {
   const loading = ref(false)
@@ -21,12 +23,15 @@ export const useAuthStore = defineStore("useAuthStore", () => {
     loading.value = false
   }
 
-  const signedIn = authClient.useSession().value.data?.session !== undefined
+  const signedIn = computed(() => session.value?.data?.session !== undefined)
+
+  const user = computed(() => session.value?.data?.user)
 
   return {
     loading,
     signIn,
     signOut,
     signedIn,
+    user,
   }
 })

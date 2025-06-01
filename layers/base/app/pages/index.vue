@@ -9,7 +9,7 @@ const authStore = useAuthStore()
     <h1 class="text-4xl font-bold">
       Home
     </h1>
-
+    <p>{{ authStore.user }}</p>
     <div v-if="authStore.loading">
       Loading...
     </div>
