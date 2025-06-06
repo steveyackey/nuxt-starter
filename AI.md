@@ -123,6 +123,46 @@ layers/feature-name/
 - Auth state management via Pinia store in `layers/auth/app/stores/auth.ts`
 - API routes handled by `layers/auth/server/api/auth/[...all].ts`
 
+#### Server-side Authentication Utility
+
+- Use the `requireAuth` utility to enforce authentication on server API endpoints.
+- Location: `layers/auth/server/auth/utils/require-auth.ts`
+- Usage: Import and call `requireAuth(event)` in any server API handler to require a valid session. If the user is not authenticated, a 401 Unauthorized error is thrown.
+- Example:
+
+```ts
+import { requireAuth } from "~~/layers/auth/server/auth/utils/require-auth"
+
+export default defineEventHandler(async (event) => {
+  const session = await requireAuth(event)
+  // ...protected logic...
+  return { user: session.user }
+})
+```
+
+- When to use: Any server API route that should only be accessible to authenticated users.
+
+#### App Middleware for Client-side Route Protection
+
+- Use Nuxt route middleware to protect client-side routes based on authentication state.
+- Example middleware location: `layers/auth/app/middleware/auth.global.ts`
+- Usage: Use the `authClient.useSession` composable to check session state and redirect if not authenticated.
+- Example:
+
+```ts
+import { authClient } from "~/lib/auth-client"
+export default defineNuxtRouteMiddleware(async (to, from) => {
+  const { data: session } = await authClient.useSession(useFetch)
+  if (!session.value) {
+    if (to.path === "/dashboard") {
+      return navigateTo("/")
+    }
+  }
+})
+```
+
+- When to use: Any page or route that should only be accessible to authenticated users on the client side.
+
 ### 7. Styling and UI
 
 - Use Nuxt UI Pro for components
